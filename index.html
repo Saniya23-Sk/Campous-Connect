@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Connect — University Announcements, Events & Academic Resources Hub</title>
+  <meta name="description"
+    content="Campus Connect is the next-generation digital campus portal empowering students and administrators with real-time announcements, club event listings, and peer-to-peer academic resource sharing.">
+  <meta name="keywords"
+    content="campus connect, university portal, student dashboard, college announcements, club events, academic notes, study materials, student administration">
+  <meta name="theme-color" content="#6366f1">
+
+  <!-- Modern Typography from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Ambient Atmospheric Lighting -->
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
+
+  <div id="app">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <a href="#dashboard" class="brand-wrapper" id="brand-link">
+        <div class="brand-logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+            <path d="M6 12v5c3 3 9 3 12 0v-5" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Campus<span>Connect</span></span>
+          <span class="brand-tagline">Academic & Social Hub</span>
+        </div>
+      </a>
+
+      <!-- Current User Profile Card -->
+      <div class="user-quick-card" id="user-profile-trigger" title="Click to view full profile">
+        <div class="user-avatar-wrap">
+          <img src="" alt="User Avatar" class="user-avatar" id="sidebar-user-avatar">
+          <span class="user-status-dot"></span>
+        </div>
+        <div class="user-info">
+          <span class="user-name" id="sidebar-user-name">Loading...</span>
+          <span class="user-badge badge-student" id="sidebar-user-badge">Student</span>
+        </div>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-dim); flex-shrink: 0;">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="nav-section-title">Navigation</div>
+      <ul class="nav-links">
+        <li>
+          <a class="nav-item active" data-view="dashboard" id="nav-dashboard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-item" data-view="announcements" id="nav-announcements">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+            <span>Announcements</span>
+            <span class="nav-badge-pill" id="badge-ann-count">6</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-item" data-view="events" id="nav-events">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>Clubs & Events</span>
+            <span class="nav-badge-pill" id="badge-evt-count">6</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-item" data-view="resources" id="nav-resources">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+            <span>Academic Resources</span>
+            <span class="nav-badge-pill" id="badge-res-count">6</span>
+          </a>
+        </li>
+        <li id="nav-admin-li" style="display: none;">
+          <a class="nav-item admin-only" data-view="admin" id="nav-admin">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            <span>Admin Control Panel</span>
+            <span class="nav-badge-pill" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">Staff</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Quick Role Toggle & Bottom Settings -->
+      <div class="nav-bottom-actions">
+        <div class="nav-section-title" style="margin: 0 0 0.4rem 0;">Quick Role Switch (Demo)</div>
+        <div class="role-quick-switch" id="role-quick-switcher">
+          <button class="role-btn active" id="switch-student-btn" title="Simulate Student Experience">
+            🎓 Student
+          </button>
+          <button class="role-btn" id="switch-admin-btn" title="Simulate Administrator Experience">
+            🛡️ Admin
+          </button>
+        </div>
+
+        <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+          <button class="btn-secondary btn-sm" id="btn-theme-toggle" style="flex: 1; justify-content: center;"
+            title="Toggle Light/Dark Theme">
+            <svg id="theme-icon-dark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <span id="theme-btn-label">Theme</span>
+          </button>
+          <button class="btn-secondary btn-sm" id="btn-auth-action" style="flex: 1; justify-content: center;"
+            title="Sign in or register">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+              <polyline points="10 17 15 12 10 7"></polyline>
+              <line x1="15" y1="12" x2="3" y2="12"></line>
+            </svg>
+            <span>Accounts</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-wrapper">
+      <!-- Top Sticky Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <div class="page-title-wrap">
+            <h1 id="page-header-title">Student Dashboard</h1>
+            <p id="page-header-subtitle">Overview of campus activity, upcoming events, and urgent notices</p>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <div class="header-search-box">
+            <svg class="header-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="global-search-input" placeholder="Search notices, events, notes...">
+          </div>
+
+          <!-- Dynamic Action Buttons depending on role / current view -->
+          <button class="btn-primary" id="btn-header-action">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span id="btn-header-action-text">Upload Notes</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Body Container with Views -->
+      <main class="content-body">
+
+        <!-- ==========================================
+             VIEW 1: DASHBOARD
+             ========================================== -->
+        <section class="app-view active-view" id="view-dashboard">
+          <!-- Hero Banner -->
+          <div class="dashboard-hero-banner">
+            <img src="assets/hero.jpg" alt="Futuristic Campus Innovation Hub" class="hero-bg-img">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+              <div class="hero-badge-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
+                </svg>
+                <span>Academic Semester Fall 2026</span>
+              </div>
+              <h2 id="dashboard-greeting">Good afternoon, Alex!</h2>
+              <p id="dashboard-hero-sub">Welcome to your student terminal. Check the newly posted examination schedules,
+                confirm your hackathon registration, and access verified lecture materials.</p>
+              <div class="hero-actions">
+                <button class="btn-primary" id="hero-btn-explore-events">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  <span>Explore Club Events</span>
+                </button>
+                <button class="btn-secondary" id="hero-btn-view-notes">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                  </svg>
+                  <span>Browse Study Notes</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Key Metrics Grid -->
+          <div class="stats-grid">
+            <div class="stat-card" style="--stat-accent: #6366f1; --stat-bg: rgba(99, 102, 241, 0.12);"
+              data-view="announcements">
+              <div class="stat-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                  <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-number" id="stat-ann-number">6</span>
+                <span class="stat-label">Active Notices</span>
+                <span class="stat-subtext">2 high priority</span>
+              </div>
+            </div>
+
+            <div class="stat-card" style="--stat-accent: #10b981; --stat-bg: rgba(16, 185, 129, 0.12);"
+              data-view="events">
+              <div class="stat-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-number" id="stat-evt-number">6</span>
+                <span class="stat-label">Campus Events</span>
+                <span class="stat-subtext" id="stat-rsvp-subtext">2 Attending</span>
+              </div>
+            </div>
+
+            <div class="stat-card" style="--stat-accent: #a855f7; --stat-bg: rgba(168, 85, 247, 0.12);"
+              data-view="resources">
+              <div class="stat-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-number" id="stat-res-number">6</span>
+                <span class="stat-label">Study Materials</span>
+                <span class="stat-subtext">Peer & Faculty verified</span>
+              </div>
+            </div>
+
+            <div class="stat-card" style="--stat-accent: #f59e0b; --stat-bg: rgba(245, 158, 11, 0.12);"
+              id="stat-card-bookmarks">
+              <div class="stat-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                </svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-number" id="stat-bkm-number">2</span>
+                <span class="stat-label">Saved Bookmarks</span>
+                <span class="stat-subtext">Quick access</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dual Column Content -->
+          <div class="dashboard-grid">
+            <!-- Left Column: Pinned & Important Announcements -->
+            <div class="glass-panel">
+              <div class="panel-header">
+                <h3 class="panel-title">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                  <span>Priority & Pinned Notices</span>
+                </h3>
+                <a class="panel-link" data-view="announcements">
+                  <span>View All Notices</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </a>
+              </div>
+              <div class="announcements-feed" id="dashboard-pinned-feed">
+                <!-- Injected via JavaScript -->
+              </div>
+            </div>
+
+            <!-- Right Column: Happening This Week + Quick Actions -->
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+              <div class="glass-panel">
+                <div class="panel-header">
+                  <h3 class="panel-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round" style="color: var(--success);">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                      <line x1="16" y1="2" x2="16" y2="6"></line>
+                      <line x1="8" y1="2" x2="8" y2="6"></line>
+                      <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    <span>Upcoming Events</span>
+                  </h3>
+                  <a class="panel-link" data-view="events">
+                    <span>Calendar</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                  </a>
+                </div>
+                <div class="mini-events-list" id="dashboard-mini-events">
+                  <!-- Injected via JavaScript -->
+                </div>
+              </div>
+
+              <!-- Quick Launchpad -->
+              <div class="glass-panel">
+                <div class="panel-header" style="margin-bottom: 0.5rem;">
+                  <h3 class="panel-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-cyan);">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                    <span>Campus Quick Tools</span>
+                  </h3>
+                </div>
+                <div class="quick-actions-grid">
+                  <div class="action-tile" data-view="resources">
+                    <div class="action-tile-icon" style="background: rgba(99, 102, 241, 0.15); color: #818cf8;">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                      </svg>
+                    </div>
+                    <span class="action-tile-title">Exam PYQs</span>
+                    <span class="action-tile-desc">Previous 5-yr papers</span>
+                  </div>
+
+                  <div class="action-tile" id="tile-upload-notes">
+                    <div class="action-tile-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                      </svg>
+                    </div>
+                    <span class="action-tile-title">Share Notes</span>
+                    <span class="action-tile-desc">Contribute study guides</span>
+                  </div>
+
+                  <div class="action-tile" data-view="events">
+                    <div class="action-tile-icon" style="background: rgba(236, 72, 153, 0.15); color: #f472b6;">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                      </svg>
+                    </div>
+                    <span class="action-tile-title">Student Clubs</span>
+                    <span class="action-tile-desc">7 Active campus societies</span>
+                  </div>
+
+                  <div class="action-tile" id="tile-helpline">
+                    <div class="action-tile-icon" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24;">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                      </svg>
+                    </div>
+                    <span class="action-tile-title">Dean Helpline</span>
+                    <span class="action-tile-desc">Emergency contacts</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             VIEW 2: ANNOUNCEMENTS
+             ========================================== -->
+        <section class="app-view" id="view-announcements">
+          <!-- Filter & Controls Toolbar -->
+          <div class="filter-toolbar">
+            <div class="filter-pills-row" id="announcement-category-pills">
+              <button class="filter-pill active" data-category="All">All Notices</button>
+              <button class="filter-pill" data-category="Urgent">🚨 Urgent</button>
+              <button class="filter-pill" data-category="Examinations">📝 Examinations</button>
+              <button class="filter-pill" data-category="Academic">🎓 Academic</button>
+              <button class="filter-pill" data-category="Placements">💼 Placements</button>
+              <button class="filter-pill" data-category="Clubs & Culture">🎨 Clubs & Culture</button>
+              <button class="filter-pill" data-category="Sports">⚽ Sports</button>
+            </div>
+
+            <div class="filter-selects">
+              <select class="custom-select" id="ann-department-select">
+                <option value="All">All Departments</option>
+                <option value="Computer Science">Computer Science & Engg</option>
+                <option value="ECE">Electronics & Communication</option>
+                <option value="Data Science">Data Science & AI</option>
+                <option value="Mechanical">Mechanical Engineering</option>
+              </select>
+
+              <select class="custom-select" id="ann-sort-select">
+                <option value="newest">Newest First</option>
+                <option value="urgent">Highest Priority</option>
+                <option value="popular">Most Bookmarked</option>
+              </select>
+
+              <button class="btn-primary btn-sm admin-create-btn" id="btn-create-announcement" style="display: none;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <span>+ New Announcement</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Announcements Feed List -->
+          <div class="announcements-feed" id="announcements-full-feed">
+            <!-- Injected via JavaScript -->
+          </div>
+        </section>
+
+        <!-- ==========================================
+             VIEW 3: CLUBS & CAMPUS EVENTS
+             ========================================== -->
+        <section class="app-view" id="view-events">
+          <div class="filter-toolbar">
+            <div class="filter-pills-row" id="event-category-pills">
+              <button class="filter-pill active" data-event-cat="All">All Events</button>
+              <button class="filter-pill" data-event-cat="Hackathon">💻 Hackathons</button>
+              <button class="filter-pill" data-event-cat="Workshop">🛠️ Workshops</button>
+              <button class="filter-pill" data-event-cat="Cultural">🎭 Cultural Fests</button>
+              <button class="filter-pill" data-event-cat="Design">✨ Design & UI</button>
+              <button class="filter-pill" data-event-cat="Business">🚀 E-Cell Pitch</button>
+              <button class="filter-pill" data-event-cat="Competition">🏆 Competitions</button>
+            </div>
+
+            <div class="filter-selects">
+              <select class="custom-select" id="event-club-select">
+                <option value="All">All Clubs & Societies</option>
+                <option value="Google Developer Student Club">GDSC</option>
+                <option value="AI & Data Science Society">AI Society</option>
+                <option value="Cultural & Arts Council">Cultural Council</option>
+                <option value="Design & Product Lab">Design Lab</option>
+                <option value="Entrepreneurship Cell (E-Cell)">E-Cell</option>
+                <option value="Robotics & Automation Lab">Robotics Lab</option>
+              </select>
+
+              <button class="filter-pill" id="filter-my-rsvps">
+                <span>✓ My Attending</span>
+              </button>
+
+              <button class="btn-primary btn-sm admin-create-btn" id="btn-create-event" style="display: none;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <span>+ Host Event</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Events Grid -->
+          <div class="events-grid" id="events-full-grid">
+            <!-- Injected via JavaScript -->
+          </div>
+        </section>
+
+        <!-- ==========================================
+             VIEW 4: ACADEMIC RESOURCE SHARING
+             ========================================== -->
+        <section class="app-view" id="view-resources">
+          <!-- Comprehensive Filters Header -->
+          <div class="resource-filters-box">
+            <div class="form-group">
+              <label for="resource-search-input">Search Subject, Code or Topic</label>
+              <input type="text" class="form-input" id="resource-search-input"
+                placeholder="e.g. Data Structures, CS301, Operating Systems...">
+            </div>
+
+            <div class="form-group">
+              <label for="resource-dept-select">Department</label>
+              <select class="form-select" id="resource-dept-select">
+                <option value="All">All Departments</option>
+                <option value="Computer Science & Engineering">Computer Science (CSE)</option>
+                <option value="Electronics & Communication">Electronics & Comm (ECE)</option>
+                <option value="Data Science & AI">Data Science & AI</option>
+                <option value="Mechanical">Mechanical Engineering</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="resource-sem-select">Semester</label>
+              <select class="form-select" id="resource-sem-select">
+                <option value="All">All Semesters</option>
+                <option value="Semester 1">Semester 1</option>
+                <option value="Semester 2">Semester 2</option>
+                <option value="Semester 3">Semester 3</option>
+                <option value="Semester 4">Semester 4</option>
+                <option value="Semester 5">Semester 5</option>
+                <option value="Semester 6">Semester 6</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="resource-type-select">Material Type</label>
+              <select class="form-select" id="resource-type-select">
+                <option value="All">All Types</option>
+                <option value="Lecture Notes">Lecture Notes</option>
+                <option value="Question Papers">Question Papers (PYQ)</option>
+                <option value="Lab Manual">Lab Manuals & Code</option>
+                <option value="Syllabus">Curriculum & Syllabus</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
+            <p style="font-size: 0.85rem; color: var(--text-muted);" id="resources-count-label">Showing 6 academic study
+              assets</p>
+            <button class="btn-primary btn-sm" id="btn-upload-resource-direct">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+              </svg>
+              <span>+ Share Study Material</span>
+            </button>
+          </div>
+
+          <!-- Academic Resources Grid -->
+          <div class="resources-grid" id="resources-full-grid">
+            <!-- Injected via JavaScript -->
+          </div>
+        </section>
+
+        <!-- ==========================================
+             VIEW 5: ADMIN CONTROL PANEL (RBAC)
+             ========================================== -->
+        <section class="app-view" id="view-admin">
+          <!-- Admin Metrics Row -->
+          <div class="admin-overview-grid">
+            <div class="admin-action-card">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">ACTIVE ANNOUNCEMENTS</span>
+                <span class="table-badge"
+                  style="background: var(--primary-light); color: var(--primary);">Published</span>
+              </div>
+              <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--text-main);"
+                id="admin-stat-ann">6</h2>
+              <button class="btn-primary btn-sm" id="admin-btn-quick-ann">+ Publish Notice</button>
+            </div>
+
+            <div class="admin-action-card">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">UPCOMING EVENTS</span>
+                <span class="table-badge"
+                  style="background: var(--success-light); color: var(--success);">Scheduled</span>
+              </div>
+              <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--text-main);"
+                id="admin-stat-evt">6</h2>
+              <button class="btn-primary btn-sm" id="admin-btn-quick-evt">+ Host Event</button>
+            </div>
+
+            <div class="admin-action-card">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">SHARED MATERIALS</span>
+                <span class="table-badge"
+                  style="background: var(--accent-purple-light); color: var(--accent-purple);">Repository</span>
+              </div>
+              <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--text-main);"
+                id="admin-stat-res">6</h2>
+              <button class="btn-secondary btn-sm" id="admin-btn-quick-res">Audit Resources</button>
+            </div>
+
+            <div class="admin-action-card">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">REGISTERED STUDENTS</span>
+                <span class="table-badge" style="background: var(--warning-light); color: var(--warning);">Active</span>
+              </div>
+              <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--text-main);">1,420+</h2>
+              <button class="btn-secondary btn-sm" id="admin-btn-reset-demo" style="color: var(--danger);">Reset Demo
+                Data</button>
+            </div>
+          </div>
+
+          <!-- Moderation & Management Tables -->
+          <div class="admin-tables-section">
+            <!-- Announcements Management Table -->
+            <div class="admin-table-wrap">
+              <div class="table-header-bar">
+                <h3 class="table-title">Announcement Management</h3>
+                <button class="btn-primary btn-sm" id="admin-add-notice-table-btn">+ Create Notice</button>
+              </div>
+              <div style="overflow-x: auto;">
+                <table class="custom-table" id="admin-announcements-table">
+                  <thead>
+                    <tr>
+                      <th>Title & Scope</th>
+                      <th>Category</th>
+                      <th>Priority</th>
+                      <th>Author</th>
+                      <th>Date</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Injected via JavaScript -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Campus Events Management Table -->
+            <div class="admin-table-wrap">
+              <div class="table-header-bar">
+                <h3 class="table-title">Events & Society Activities</h3>
+                <button class="btn-primary btn-sm" id="admin-add-event-table-btn">+ Host Event</button>
+              </div>
+              <div style="overflow-x: auto;">
+                <table class="custom-table" id="admin-events-table">
+                  <thead>
+                    <tr>
+                      <th>Event Title</th>
+                      <th>Club / Society</th>
+                      <th>Date & Time</th>
+                      <th>Venue</th>
+                      <th>RSVP Count</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Injected via JavaScript -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODALS
+       ========================================== -->
+
+  <!-- 1. Authentication Modal (Login / Register / Quick Switch) -->
+  <div class="modal-overlay" id="modal-auth">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title" id="auth-modal-title">Sign in to Campus Connect</h3>
+        <button class="modal-close-btn" data-close-modal="modal-auth" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab-btn active" id="auth-tab-login">Login</button>
+        <button class="auth-tab-btn" id="auth-tab-register">New Account</button>
+      </div>
+
+      <!-- Quick 1-Click Demo Logins -->
+      <div style="padding: 0 1.5rem;">
+        <div class="quick-demo-accounts">
+          <div class="demo-title">⚡ Instant 1-Click Demo Evaluation</div>
+          <div class="demo-btns-row">
+            <button class="btn-secondary btn-sm" id="btn-quick-demo-student"
+              style="flex: 1; border-color: var(--primary);">
+              🎓 Login as Student
+            </button>
+            <button class="btn-secondary btn-sm" id="btn-quick-demo-admin"
+              style="flex: 1; border-color: var(--warning);">
+              🛡️ Login as Admin
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Login Form Form -->
+      <form id="form-login" class="modal-body" style="padding-top: 1rem;">
+        <div class="form-group">
+          <label for="login-email">Campus Email</label>
+          <input type="email" class="form-input" id="login-email" required value="alex.morgan@student.campus.edu"
+            placeholder="e.g. name@student.campus.edu">
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" class="form-input" id="login-password" required value="student123"
+            placeholder="Enter your password">
+        </div>
+        <button type="submit" class="btn-primary" style="margin-top: 0.5rem; justify-content: center;">
+          Sign In
+        </button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="form-register" class="modal-body" style="display: none; padding-top: 1rem;">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="reg-name">Full Name</label>
+            <input type="text" class="form-input" id="reg-name" required placeholder="e.g. Jordan Smith">
+          </div>
+          <div class="form-group">
+            <label for="reg-role">Role</label>
+            <select class="form-select" id="reg-role">
+              <option value="student">Student</option>
+              <option value="admin">Administrator / Faculty</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="reg-email">Campus Email Address</label>
+          <input type="email" class="form-input" id="reg-email" required placeholder="e.g. jordan.smith@campus.edu">
+        </div>
+
+        <div class="form-group">
+          <label for="reg-password">Password</label>
+          <input type="password" class="form-input" id="reg-password" required
+            placeholder="Choose a password (min 6 characters)">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="reg-dept">Department</label>
+            <select class="form-select" id="reg-dept">
+              <option value="Computer Science & Engineering">Computer Science (CSE)</option>
+              <option value="Electronics & Communication">Electronics & Comm (ECE)</option>
+              <option value="Data Science & AI">Data Science & AI</option>
+              <option value="Mechanical Engineering">Mechanical Engineering</option>
+              <option value="Business Administration">Business / MBA</option>
+            </select>
+          </div>
+          <div class="form-group" id="reg-sem-wrap">
+            <label for="reg-sem">Semester / Year</label>
+            <select class="form-select" id="reg-sem">
+              <option value="Semester 1">Semester 1</option>
+              <option value="Semester 3">Semester 3</option>
+              <option value="Semester 5">Semester 5</option>
+              <option value="Semester 7">Semester 7</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary" style="margin-top: 0.5rem; justify-content: center;">
+          Create Campus Account
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. Create / Edit Announcement Modal (Admin RBAC) -->
+  <div class="modal-overlay" id="modal-announcement">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title" id="ann-modal-title">Create Official Announcement</h3>
+        <button class="modal-close-btn" data-close-modal="modal-announcement" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <form id="form-announcement" class="modal-body">
+        <input type="hidden" id="ann-form-id" value="">
+        <div class="form-group">
+          <label for="ann-input-title">Notice Title</label>
+          <input type="text" class="form-input" id="ann-input-title" required
+            placeholder="e.g. End-Term Examination Schedule Released">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ann-input-category">Category</label>
+            <select class="form-select" id="ann-input-category">
+              <option value="Academic">Academic</option>
+              <option value="Examinations">Examinations</option>
+              <option value="Placements">Placements & Careers</option>
+              <option value="Clubs & Culture">Clubs & Culture</option>
+              <option value="Sports">Sports</option>
+              <option value="Urgent">General Alert</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="ann-input-priority">Priority Level</label>
+            <select class="form-select" id="ann-input-priority">
+              <option value="normal">Normal</option>
+              <option value="urgent">Urgent / Critical</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ann-input-dept">Target Department</label>
+            <input type="text" class="form-input" id="ann-input-dept" value="All Departments"
+              placeholder="e.g. All Departments or CSE, ECE">
+          </div>
+
+          <div class="form-group">
+            <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; margin-top: 1.5rem;">
+              <input type="checkbox" id="ann-input-pinned"
+                style="width: 18px; height: 18px; accent-color: var(--primary);">
+              <span style="font-size: 0.85rem; color: var(--text-main); font-weight: 600;">Pin to top of feed</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="ann-input-content">Detailed Announcement Content</label>
+          <textarea class="form-textarea" id="ann-input-content" rows="4" required
+            placeholder="Write the complete announcement notice..."></textarea>
+        </div>
+
+        <div class="modal-footer" style="padding: 1rem 0 0 0;">
+          <button type="button" class="btn-secondary" data-close-modal="modal-announcement">Cancel</button>
+          <button type="submit" class="btn-primary" id="ann-submit-btn">Publish Notice</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. Host Event Modal (Admin / Club Lead) -->
+  <div class="modal-overlay" id="modal-event">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">Host New Campus Event</h3>
+        <button class="modal-close-btn" data-close-modal="modal-event" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <form id="form-event" class="modal-body">
+        <div class="form-group">
+          <label for="evt-input-title">Event Title</label>
+          <input type="text" class="form-input" id="evt-input-title" required
+            placeholder="e.g. Autonomous Robotics Hackathon 2026">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="evt-input-club">Organizing Club / Society</label>
+            <select class="form-select" id="evt-input-club">
+              <option value="Google Developer Student Club">Google Developer Student Club</option>
+              <option value="AI & Data Science Society">AI & Data Science Society</option>
+              <option value="Cultural & Arts Council">Cultural & Arts Council</option>
+              <option value="Design & Product Lab">Design & Product Lab</option>
+              <option value="Entrepreneurship Cell (E-Cell)">Entrepreneurship Cell (E-Cell)</option>
+              <option value="Robotics & Automation Lab">Robotics & Automation Lab</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="evt-input-category">Event Category</label>
+            <select class="form-select" id="evt-input-category">
+              <option value="Hackathon">Hackathon</option>
+              <option value="Workshop">Workshop</option>
+              <option value="Cultural">Cultural Fest</option>
+              <option value="Design">Design & UI</option>
+              <option value="Business">Business & Pitch</option>
+              <option value="Competition">Competition</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="evt-input-date">Date</label>
+            <input type="date" class="form-input" id="evt-input-date" required value="2026-11-18">
+          </div>
+          <div class="form-group">
+            <label for="evt-input-time">Time</label>
+            <input type="text" class="form-input" id="evt-input-time" value="10:00 AM - 04:00 PM"
+              placeholder="e.g. 10:00 AM - 04:00 PM">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="evt-input-venue">Venue / Location</label>
+            <input type="text" class="form-input" id="evt-input-venue" required
+              placeholder="e.g. Auditorium 2 or CS Lab 304">
+          </div>
+          <div class="form-group">
+            <label for="evt-input-capacity">Max Capacity</label>
+            <input type="number" class="form-input" id="evt-input-capacity" value="150" min="10" max="2000">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="evt-input-desc">Event Description & Agenda</label>
+          <textarea class="form-textarea" id="evt-input-desc" rows="3" required
+            placeholder="Detailed agenda, requirements, and prizes..."></textarea>
+        </div>
+
+        <div class="modal-footer" style="padding: 1rem 0 0 0;">
+          <button type="button" class="btn-secondary" data-close-modal="modal-event">Cancel</button>
+          <button type="submit" class="btn-primary">Host Event</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 4. Upload Academic Resource Modal (Peer & Faculty) -->
+  <div class="modal-overlay" id="modal-upload-resource">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">Share Academic Resource</h3>
+        <button class="modal-close-btn" data-close-modal="modal-upload-resource" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <form id="form-resource" class="modal-body">
+        <div class="form-group">
+          <label for="res-input-title">Document Title</label>
+          <input type="text" class="form-input" id="res-input-title" required
+            placeholder="e.g. Operating Systems Concurrency & Semaphores Notes">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="res-input-subject">Subject Name</label>
+            <input type="text" class="form-input" id="res-input-subject" required placeholder="e.g. Operating Systems">
+          </div>
+          <div class="form-group">
+            <label for="res-input-code">Course Code</label>
+            <input type="text" class="form-input" id="res-input-code" value="CS402" placeholder="e.g. CS402">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="res-input-dept">Department</label>
+            <select class="form-select" id="res-input-dept">
+              <option value="Computer Science & Engineering">Computer Science & Engg</option>
+              <option value="Electronics & Communication">Electronics & Comm</option>
+              <option value="Data Science & AI">Data Science & AI</option>
+              <option value="Mechanical">Mechanical Engineering</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="res-input-sem">Semester</label>
+            <select class="form-select" id="res-input-sem">
+              <option value="Semester 1">Semester 1</option>
+              <option value="Semester 2">Semester 2</option>
+              <option value="Semester 3">Semester 3</option>
+              <option value="Semester 4">Semester 4</option>
+              <option value="Semester 5">Semester 5</option>
+              <option value="Semester 6">Semester 6</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="res-input-type">Material Type</label>
+            <select class="form-select" id="res-input-type">
+              <option value="Lecture Notes">Lecture Notes</option>
+              <option value="Question Papers">Question Papers (PYQ)</option>
+              <option value="Lab Manual">Lab Manual</option>
+              <option value="Syllabus">Curriculum / Syllabus</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="res-input-format">File Format</label>
+            <select class="form-select" id="res-input-format">
+              <option value="PDF">PDF Document</option>
+              <option value="ZIP">ZIP Archive</option>
+              <option value="DOCX">Word Document</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="res-input-desc">Overview & Key Topics Covered</label>
+          <textarea class="form-textarea" id="res-input-desc" rows="3" required
+            placeholder="Explain what topics, units, or exam questions this covers..."></textarea>
+        </div>
+
+        <div class="modal-footer" style="padding: 1rem 0 0 0;">
+          <button type="button" class="btn-secondary" data-close-modal="modal-upload-resource">Cancel</button>
+          <button type="submit" class="btn-primary">Upload & Publish</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 5. Event Details Modal -->
+  <div class="modal-overlay" id="modal-event-details">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title" id="event-detail-title">Event Information</h3>
+        <button class="modal-close-btn" data-close-modal="modal-event-details" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body" id="event-detail-body">
+        <!-- Injected via JavaScript -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary" data-close-modal="modal-event-details">Close</button>
+        <button type="button" class="btn-primary" id="event-detail-rsvp-btn">RSVP for Event</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. User Profile & Saved Items Modal -->
+  <div class="modal-overlay" id="modal-profile">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">Campus Profile</h3>
+        <button class="modal-close-btn" data-close-modal="modal-profile" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body" id="profile-modal-body">
+        <!-- Injected via JavaScript -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary" id="btn-profile-logout"
+          style="color: var(--danger); margin-right: auto;">
+          Sign Out
+        </button>
+        <button type="button" class="btn-primary" data-close-modal="modal-profile">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification System -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
